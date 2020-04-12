@@ -19,21 +19,19 @@ $OxfordStreet = new ResidentialWay();
 $bicycle = new Bike('blue', 1);
 $truck = new Truck('blue', 4,'fuel', 100, 100);
 $skateboard = new Skateboard('grey', 0);
-$audi = new Car('redwhine', 5, 'fuel');
+$MacLaren = new Car('redwhine', 5, 'fuel');
 
-$audi->moveForward();
-$truck->moveForward();
 
 //instanciation des méthodes
-$D2020->addVehicule($audi);
-var_dump($D2020);
+$MacLaren->setParkBrake(true);
+var_dump($MacLaren);
 
-$sidewalk->addVehicule($skateboard);
-var_dump($sidewalk);
-
-$OxfordStreet->addVehicule($bicycle);
-var_dump($OxfordStreet);
-
-$sidewalk->addVehicule($truck);
-var_dump($sidewalk);
-
+try {
+    $MacLaren->start();
+} catch (Exception $e) {
+    echo $e->getMessage().'<br>';
+    $MacLaren->setParkBrake(false);
+}finally {
+    echo 'Ma voiture roule comme un donut haha (in english please...)';
+}
+var_dump($MacLaren->getHasParkBrake());

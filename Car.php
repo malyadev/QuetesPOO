@@ -20,6 +20,34 @@ class Car extends Vehicule
         $this->energy = $energy;
     }
 
+    /**
+     * @var boolean
+     */
+    private $hasParkBrake;
+
+    /**
+     * @return bool
+     */
+    public function getHasParkBrake()
+    {
+        return $this->hasParkBrake;
+    }
+
+    public function setParkBrake($hasParkBrake)
+    {
+        $this->hasParkBrake = $hasParkBrake;
+    }
+
+    public function start()
+    {
+        if ($this->getHasParkBrake() === true) {
+            throw new Exception('The parkbrake is on, dumbass');
+        }
+        echo "Vroom... </br></br>";
+        return $this->setEnergyLevel = 100;
+
+    }
+
     public function moveForward()
     {
         $this->currentSpeed = 125;
@@ -52,13 +80,7 @@ class Car extends Vehicule
 
 // Code gardé car ces méthodes sont bien plus rigolotes lol no delete please
 
-/* public function turnOn()
-{
-    $this->setEnergyLevel = 100;
-    return "Vroom... </br></br>";
-}
-
-
+/*
  public function brakecar(): string
 {
     $sentence = "</br>SH*T THE COPS</br>";
